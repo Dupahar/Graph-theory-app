@@ -227,7 +227,7 @@ export default function ProjectC() {
                         {mode === 'class' ? (
                             <>
                                 <div className="flex justify-between items-center mb-4">
-                                    <h2 className="text-lg font-semibold">Class Data</h2>
+                                    <h2 className="text-lg font-semibold text-gray-900">Class Data</h2>
                                     <button onClick={addCourse} className="flex items-center gap-1 text-sm bg-blue-600 text-white px-3 py-1.5 rounded hover:bg-blue-700">
                                         <Plus size={16} /> Add Course
                                     </button>
@@ -236,10 +236,10 @@ export default function ProjectC() {
                                     <table className="w-full text-sm text-left">
                                         <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                                             <tr>
-                                                <th className="px-4 py-3">Course Name</th>
-                                                <th className="px-4 py-3">Teacher</th>
-                                                <th className="px-4 py-3">Student Groups</th>
-                                                <th className="px-4 py-3">Actions</th>
+                                                <th className="px-4 py-3 text-gray-900">Course Name</th>
+                                                <th className="px-4 py-3 text-gray-900">Teacher</th>
+                                                <th className="px-4 py-3 text-gray-900">Student Groups</th>
+                                                <th className="px-4 py-3 text-gray-900">Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -280,7 +280,7 @@ export default function ProjectC() {
                         ) : (
                             <>
                                 <div className="mb-4">
-                                    <h2 className="text-lg font-semibold mb-2">Exam Schedule Input</h2>
+                                    <h2 className="text-lg font-semibold mb-2 text-gray-900">Exam Schedule Input</h2>
                                     <p className="text-sm text-gray-600 mb-4">
                                         Enter exams grouped by Semester. Exams in the same semester cannot be scheduled at the same time.
                                     </p>
@@ -308,7 +308,7 @@ export default function ProjectC() {
                 {view === 'graph' && (
                     <div className="flex h-full gap-4">
                         <div className="w-64 bg-white rounded shadow p-4 flex flex-col">
-                            <h2 className="font-semibold mb-2">Graph View</h2>
+                            <h2 className="font-semibold mb-2 text-gray-900">Graph View</h2>
                             <p className="text-sm text-gray-600 mb-4">
                                 {mode === 'class'
                                     ? "Nodes are courses. Edges represent conflicts (same teacher or student group)."
@@ -327,7 +327,7 @@ export default function ProjectC() {
                                 <select
                                     value={algorithm}
                                     onChange={(e) => setAlgorithm(e.target.value as 'greedy' | 'dsatur')}
-                                    className="w-full text-sm border rounded p-1"
+                                    className="w-full text-sm border rounded p-1 text-gray-900"
                                 >
                                     <option value="greedy">Greedy (Welsh-Powell)</option>
                                     <option value="dsatur">DSATUR (Research Paper)</option>

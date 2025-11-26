@@ -172,7 +172,7 @@ export default function ProjectB() {
             <header className="bg-white border-b p-4 flex items-center justify-between">
                 <h1 className="text-xl font-bold text-gray-800">Project B: Euler & Hamiltonian Paths</h1>
                 <div className="flex gap-4">
-                    <label className="flex items-center gap-2 text-sm select-none">
+                    <label className="flex items-center gap-2 text-sm select-none text-gray-800">
                         <input
                             type="checkbox"
                             checked={isDirected}
@@ -205,7 +205,7 @@ export default function ProjectB() {
 
                     {/* Text Input Section */}
                     <div>
-                        <h2 className="font-semibold mb-2 text-sm text-gray-700">Quick Input</h2>
+                        <h2 className="font-semibold mb-2 text-sm text-gray-900">Quick Input</h2>
                         <textarea
                             value={textInput}
                             onChange={(e) => setTextInput(e.target.value)}
@@ -222,7 +222,7 @@ export default function ProjectB() {
 
                     {/* Algorithms Section */}
                     <div>
-                        <h2 className="font-semibold mb-2 text-sm text-gray-700">Algorithms</h2>
+                        <h2 className="font-semibold mb-2 text-sm text-gray-900">Algorithms</h2>
                         <div className="space-y-2">
                             <button
                                 onClick={handleEuler}
@@ -242,7 +242,7 @@ export default function ProjectB() {
                     {/* Results Section */}
                     {result && (
                         <div className="p-3 bg-white rounded shadow-sm border border-blue-100">
-                            <h3 className="text-sm font-medium mb-1 text-gray-700">Result</h3>
+                            <h3 className="text-sm font-medium mb-1 text-gray-900">Result</h3>
                             <p className="text-sm text-gray-600 break-words">
                                 {result}
                             </p>
@@ -252,7 +252,7 @@ export default function ProjectB() {
                     {/* Animation Controls */}
                     {pathResult && (
                         <div className="p-3 bg-white rounded shadow-sm border border-purple-100">
-                            <h3 className="text-sm font-medium mb-2 text-gray-700">Animation Controls</h3>
+                            <h3 className="text-sm font-medium mb-2 text-gray-900">Animation Controls</h3>
                             <div className="flex justify-between items-center mb-2">
                                 <button
                                     onClick={() => setAnimationStep(-1)}
@@ -268,7 +268,7 @@ export default function ProjectB() {
                                 >
                                     ◀
                                 </button>
-                                <span className="text-xs font-mono">
+                                <span className="text-xs font-mono text-gray-900">
                                     {animationStep + 1} / {pathResult.nodePath.length}
                                 </span>
                                 <button
@@ -280,7 +280,7 @@ export default function ProjectB() {
                                 </button>
                             </div>
                             <div className="text-xs text-gray-500 font-mono overflow-x-auto whitespace-nowrap">
-                                {pathResult.nodePath.join(' → ')}
+                                {pathResult.nodePath.map(id => nodes.find(n => n.id === id)?.label || id).join(' → ')}
                             </div>
                         </div>
                     )}
