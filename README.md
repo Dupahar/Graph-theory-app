@@ -2,7 +2,8 @@
 
 An interactive web application demonstrating advanced Graph Theory concepts, built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-![Project Demo](/C:/Users/mahaj/.gemini/antigravity/brain/6ae77046-5c8e-47c5-8082-d7373f01604a/graph_app_demo_1764141764480.webp)
+**Live Demo:** [https://graph-theory-app.vercel.app/](https://graph-theory-app.vercel.app/)
+
 
 ## 🚀 Features
 

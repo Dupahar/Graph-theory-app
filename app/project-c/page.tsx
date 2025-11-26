@@ -249,21 +249,21 @@ export default function ProjectC() {
                                                         <input
                                                             value={course.name}
                                                             onChange={e => updateCourse(course.id, 'name', e.target.value)}
-                                                            className="border rounded px-2 py-1 w-full"
+                                                            className="border rounded px-2 py-1 w-full text-gray-900"
                                                         />
                                                     </td>
                                                     <td className="px-4 py-2">
                                                         <input
                                                             value={course.teacher}
                                                             onChange={e => updateCourse(course.id, 'teacher', e.target.value)}
-                                                            className="border rounded px-2 py-1 w-full"
+                                                            className="border rounded px-2 py-1 w-full text-gray-900"
                                                         />
                                                     </td>
                                                     <td className="px-4 py-2">
                                                         <input
                                                             value={course.students}
                                                             onChange={e => updateCourse(course.id, 'students', e.target.value)}
-                                                            className="border rounded px-2 py-1 w-full"
+                                                            className="border rounded px-2 py-1 w-full text-gray-900"
                                                         />
                                                     </td>
                                                     <td className="px-4 py-2">
@@ -287,7 +287,7 @@ export default function ProjectC() {
                                     <textarea
                                         value={examInput}
                                         onChange={(e) => setExamInput(e.target.value)}
-                                        className="w-full h-64 p-4 border rounded-lg font-mono text-sm"
+                                        className="w-full h-64 p-4 border rounded-lg font-mono text-sm text-gray-900"
                                         placeholder="Semester 1: Math, English, Science&#10;Semester 2: History, Geography"
                                     />
                                 </div>

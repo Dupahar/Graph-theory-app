@@ -210,7 +210,7 @@ export default function ProjectB() {
                             value={textInput}
                             onChange={(e) => setTextInput(e.target.value)}
                             placeholder="A,B&#10;B,C&#10;C,A"
-                            className="w-full h-24 p-2 text-sm border rounded mb-2 font-mono"
+                            className="w-full h-24 p-2 text-sm border rounded mb-2 font-mono text-gray-900"
                         />
                         <button
                             onClick={parseGraphInput}
