@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Graph Theory & Timetable Scheduling App
 
-## Getting Started
+An interactive web application demonstrating advanced Graph Theory concepts, built with **Next.js**, **TypeScript**, and **Tailwind CSS**.
 
-First, run the development server:
+![Project Demo](/C:/Users/mahaj/.gemini/antigravity/brain/6ae77046-5c8e-47c5-8082-d7373f01604a/graph_app_demo_1764141764480.webp)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 1. Euler & Hamiltonian Paths (Project B)
+Visualize fundamental graph traversal algorithms with an interactive canvas.
+*   **Interactive Graph Creation**: Add nodes and edges, drag to rearrange.
+*   **Text Input**: Quickly generate graphs by pasting edge lists (e.g., `A,B`).
+*   **Euler Path/Circuit**: Detects existence and **animates** the path using Hierholzer's Algorithm.
+*   **Hamiltonian Path**: Finds and animates paths visiting every vertex exactly once.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 2. Timetable Scheduling (Project C)
+Solve complex scheduling problems using Graph Coloring.
+*   **Dual Modes**:
+    *   **Class Schedule**: Avoid conflicts between Teachers and Student Groups.
+    *   **Exam Schedule**: Prevent exams from the same Semester occurring simultaneously.
+*   **Algorithms**: Compare **Greedy (Welsh-Powell)** vs. **DSATUR** (Degree of Saturation) coloring algorithms.
+*   **Visualizations**: View the Conflict Graph and the resulting Color-Coded Timetable.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Tech Stack
+*   **Framework**: Next.js 14 (App Router)
+*   **Language**: TypeScript
+*   **Styling**: Tailwind CSS
+*   **State Management**: Zustand
+*   **Animations**: Framer Motion
+*   **Icons**: Lucide React
 
-## Learn More
+## 📦 Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/yourusername/graph-theory-app.git
+    ```
+2.  **Install dependencies**
+    ```bash
+    npm install
+    ```
+3.  **Run the development server**
+    ```bash
+    npm run dev
+    ```
+4.  Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
