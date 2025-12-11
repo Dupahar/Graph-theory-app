@@ -12,12 +12,12 @@ export default function Home() {
 
       <div className="grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-left gap-8">
         <Link
-          href="/project-b"
+          href="/minor"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`mb-3 text-2xl font-semibold flex items-center gap-2`}>
             <Network className="w-6 h-6 text-blue-400" />
-            Project B
+            Minor Project
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               <ArrowRight className="w-4 h-4 ml-1" />
             </span>
@@ -28,12 +28,12 @@ export default function Home() {
         </Link>
 
         <Link
-          href="/project-c"
+          href="/major"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
         >
           <h2 className={`mb-3 text-2xl font-semibold flex items-center gap-2`}>
             <Calendar className="w-6 h-6 text-green-400" />
-            Project C
+            Major Project
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
               <ArrowRight className="w-4 h-4 ml-1" />
             </span>

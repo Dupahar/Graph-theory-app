@@ -5,7 +5,7 @@ import { useGraphStore } from '@/lib/useGraphStore';
 import { checkEuler, findHamiltonianPath } from '@/lib/graph-algorithms';
 import { useState, useEffect } from 'react';
 
-export default function ProjectB() {
+export default function MinorProject() {
     const { nodes, edges, isDirected, setDirected, clearGraph, updateEdge, updateNode, setGraph } = useGraphStore();
     const [result, setResult] = useState<string>("");
     const [isAnimating, setIsAnimating] = useState(false);
@@ -170,7 +170,7 @@ export default function ProjectB() {
     return (
         <div className="flex h-screen flex-col">
             <header className="bg-white border-b p-4 flex items-center justify-between">
-                <h1 className="text-xl font-bold text-gray-800">Project B: Euler & Hamiltonian Paths</h1>
+                <h1 className="text-xl font-bold text-gray-800">Minor Project: Euler & Hamiltonian Paths</h1>
                 <div className="flex gap-4">
                     <label className="flex items-center gap-2 text-sm select-none text-gray-800">
                         <input

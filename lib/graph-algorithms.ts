@@ -244,7 +244,47 @@ export function isConnected(adj: AdjacencyList, nodes: Node[]): boolean {
 
 // Project C: Graph Coloring
 
-export function greedyColoring(nodes: Node[], edges: Edge[]) {
+export function balancedColoring(nodes: Node[], edges: Edge[], maxSlots: number = 40): Map<string, number> {
+    const adjList = buildAdjacencyList(nodes, edges, false);
+    const sortedNodes = nodes.slice().sort((a, b) => (adjList.get(b.id)?.length || 0) - (adjList.get(a.id)?.length || 0));
+    const colors = new Map<string, number>();
+    const slotCounts = new Array(maxSlots + 1).fill(0); // 1-indexed
+
+    sortedNodes.forEach(node => {
+        const neighborColors = new Set<number>();
+        (adjList.get(node.id) || []).forEach(neighborId => {
+            if (colors.has(neighborId)) {
+                neighborColors.add(colors.get(neighborId)!);
+            }
+        });
+
+        // Find all VALID slots
+        const validSlots: number[] = [];
+        for (let c = 1; c <= maxSlots; c++) {
+            if (!neighborColors.has(c)) {
+                validSlots.push(c);
+            }
+        }
+
+        if (validSlots.length > 0) {
+            // Pick slot with LEAST current usage to balance load
+            validSlots.sort((a, b) => slotCounts[a] - slotCounts[b]);
+            const selectedSlot = validSlots[0];
+            colors.set(node.id, selectedSlot);
+            slotCounts[selectedSlot]++;
+        } else {
+            // Overflow if no valid slot in range (should rarely happen for 40 slots and simple graph)
+            // Just pick first available above maxSlots
+            let c = maxSlots + 1;
+            while (neighborColors.has(c)) c++;
+            colors.set(node.id, c);
+        }
+    });
+
+    return colors;
+}
+
+export function greedyColoring(nodes: Node[], edges: Edge[]): { colors: Map<string, number>, maxColor: number } {
     // 1. Sort nodes by degree (descending) - Welsh-Powell heuristic
     const adj = buildAdjacencyList(nodes, edges, false);
     const sortedNodes = [...nodes].sort((a, b) => {
