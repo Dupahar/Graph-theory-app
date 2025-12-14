@@ -31,13 +31,55 @@ export default function MinorProject() {
         let edgeIdCounter = 0;
 
         lines.forEach(line => {
-            const parts = line.split(',').map(s => s.trim());
-            if (parts.length >= 2) {
-                const [source, target] = parts;
-                if (source && target) {
-                    if (!newNodes.has(source)) newNodes.set(source, { id: source, label: source });
-                    if (!newNodes.has(target)) newNodes.set(target, { id: target, label: target });
+            const cleanLine = line.trim();
+            if (!cleanLine) return;
 
+            // Check for Adjacency List format "A: B, C"
+            if (cleanLine.includes(':')) {
+                const [sourcePart, targetsPart] = cleanLine.split(':');
+                const source = sourcePart.trim();
+                if (source) {
+                    if (!newNodes.has(source)) newNodes.set(source, { id: source, label: source });
+
+                    if (targetsPart) {
+                        const targets = targetsPart.split(/[,\s]+/).filter(s => s.trim().length > 0);
+                        targets.forEach(target => {
+                            if (!newNodes.has(target)) newNodes.set(target, { id: target, label: target });
+                            newEdges.push({
+                                id: `e${edgeIdCounter++}`,
+                                source,
+                                target,
+                                isDirected
+                            });
+                        });
+                    }
+                }
+                return;
+            }
+
+            // Standard Edge List or Path format
+            let parts: string[];
+
+            // Heuristic: If commas are present, assume comma-separated (allows spaces in names like "Node 1")
+            // Otherwise, split by whitespace
+            if (cleanLine.includes(',')) {
+                parts = cleanLine.split(',').map(s => s.trim()).filter(s => s.length > 0);
+            } else if (cleanLine.includes('->')) {
+                parts = cleanLine.split('->').map(s => s.trim()).filter(s => s.length > 0);
+            } else {
+                parts = cleanLine.split(/\s+/);
+            }
+
+            // Add all nodes mentioned
+            parts.forEach(part => {
+                if (!newNodes.has(part)) newNodes.set(part, { id: part, label: part });
+            });
+
+            // Create edges for pairs (A->B, B->C)
+            if (parts.length >= 2) {
+                for (let i = 0; i < parts.length - 1; i++) {
+                    const source = parts[i];
+                    const target = parts[i + 1];
                     newEdges.push({
                         id: `e${edgeIdCounter++}`,
                         source,
@@ -50,6 +92,11 @@ export default function MinorProject() {
 
         // Layout nodes in a circle
         const nodeList = Array.from(newNodes.values());
+        if (nodeList.length === 0) {
+            setResult("No valid nodes found in input.");
+            return;
+        }
+
         const radius = 200;
         const centerX = 400;
         const centerY = 300;
@@ -64,7 +111,7 @@ export default function MinorProject() {
         });
 
         setGraph(positionedNodes, newEdges);
-        setResult("Graph generated from text input.");
+        setResult(`Graph generated with ${nodeList.length} nodes and ${newEdges.length} edges.`);
         setPathResult(null);
         setAnimationStep(-1);
     };
@@ -209,7 +256,7 @@ export default function MinorProject() {
                         <textarea
                             value={textInput}
                             onChange={(e) => setTextInput(e.target.value)}
-                            placeholder="A,B&#10;B,C&#10;C,A"
+                            placeholder="Formats:&#10;A, B (Comma)&#10;A -> B -> C (Arrow)&#10;A B (Space)&#10;A: B, C (Adjacency)"
                             className="w-full h-24 p-2 text-sm border rounded mb-2 font-mono text-gray-900"
                         />
                         <button

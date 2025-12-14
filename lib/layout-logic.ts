@@ -13,11 +13,11 @@ export function forceDirectedLayout(nodes: Node[], edges: Edge[], width: number 
     const simulationNodes = nodes.map(n => ({ ...n, vx: 0, vy: 0 }));
 
     // Constants
-    const REPULSION = 2000;
-    const SPRING_LENGTH = 100;
-    const SPRING_STRENGTH = 0.05;
+    const REPULSION = 8000; // Increased from 2000 to spread nodes more
+    const SPRING_LENGTH = 180; // Increased from 100
+    const SPRING_STRENGTH = 0.04;
     const DAMPING = 0.9;
-    const CENTER_PULL = 0.02;
+    const CENTER_PULL = 0.015; // Slightly reduced to allow more spread
 
     for (let i = 0; i < iterations; i++) {
         // 1. Repulsion (Nodes push apart)
